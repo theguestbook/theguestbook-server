@@ -1,5 +1,5 @@
 var static = require("node-static");
-var fileServer = new(static.Server)('./public');
+var fileServer = new static.Server('/var/lib/stickshift/5228c3165973caf130000038/app-root/data/604596/Datagram.io/app'); //symbolic link to the ~/app directory
 
 function route(RouteData) { 
 	console.log("About to route a request for " + RouteData.pathname); 
