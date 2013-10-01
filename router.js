@@ -1,11 +1,12 @@
 var static = require("node-static");
-var fileServer = new static.Server('/var/lib/stickshift/5228c3165973caf130000038/app-root/data/604596/Datagram.io/app'); //symbolic link to the ~/app directory
+var fileServer = new static.Server(
+    './app'); //link to the ~/app directory via a symbolic link
 
-function route(RouteData) { 
-	console.log("About to route a request for " + RouteData.pathname); 
+function route(RouteData) {
+	console.log("About to route a request for " + RouteData.pathname);
 	var handler = RouteData.handlers[RouteData.pathname];
     if (typeof handler === 'function') {
-		handler(RouteData); 
+		handler(RouteData);
 	} else {
         console.log("Loading page");
         fileServer.serve(RouteData.request, RouteData.response, function(err, result) {
@@ -14,7 +15,7 @@ function route(RouteData) {
                     RouteData.response.end();
             }
         });
-	}	
+	}
 }
 
 exports.route = route;
