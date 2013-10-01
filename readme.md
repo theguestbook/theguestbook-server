@@ -1,3 +1,3 @@
-This repo contains boilerplate for creating a basic, easily extendable node.js server. 
+The backend for theguestbook.com.
 
-Credit to [*The Node Beginner Book*](http://www.nodebeginner.org/) for the basic code which I have built and expanded upon and its excellent tutorial.
+It is based on the [nodejs_boiler](https://github.com/thebradbain/nodejs_boiler) project.
