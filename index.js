@@ -5,7 +5,7 @@ var mongoose = require("mongoose");
 var server = require("./server");
 var router = require("./router");
 var requestHandlers = require("./requestHandlers");
-var host = require("./mongoose-models/conf").host; //contains username and password for remote server; added to gitignore.
+var host = require("./conf").host; //contains username and password for remote server; added to gitignore.
 
 var handlers={};
 handlers["/"]="index.html";
