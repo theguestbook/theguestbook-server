@@ -1,6 +1,5 @@
 var static = require("node-static");
-var fileServer = new static.Server(
-    './app'); //link to the ~/app directory via a symbolic link
+var fileServer = new static.Server(require("./conf.js").publicDir); //link to the ~/app directory via a symbolic link
 
 function route(RouteData) {
 	console.log("About to route a request for " + RouteData.pathname);
