@@ -4,10 +4,10 @@ var url = require("url");
 function start(route, handlers) {
 	function onRequest(request, response) {
         var postData = "";
-		    var pathname = url.parse(request.url).pathname; 
+		var pathname = url.parse(request.url).pathname; 
         var querystring = url.parse(request.url, true).query;
         
-		    console.log("Request for " + pathname + " received.");
+		console.log("Request for " + pathname + " received.");
         
         request.addListener('data', function(data) {
             postData += data;
@@ -24,12 +24,12 @@ function start(route, handlers) {
             );
            route(routeData); 
         });
-  	}
+    }
 
-  	var app = http.createServer(onRequest);
+    var app = http.createServer(onRequest);
     app.listen(process.env.PORT || 8888);
     
-  	console.log("Server has started.");
+    console.log("Server has started.");
 }
 
 function RouteData(response, request, handlers, pathname, postData, querystring) {

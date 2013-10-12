@@ -1,7 +1,15 @@
 var postHelper = require("./postHelper");
 
 exports.getPosts = function(RouteData) {
-    postHelper.getPosts(function(err, res) {
+    var getPostJSON = JSON.parse(RouteData.postData);
+    
+    var options = {}; //general options
+    options.find = {}; //options pertaining to Model.find()
+    options.limit = getPostJSON.amount;
+    options.start = getPostJSON.start;
+
+    //get posts from the database via postHelper
+    postHelper.getPosts(options, function(err, res) {
         if(err === null) {
             RouteData.response.writeHead(200);
             RouteData.response.write(JSON.stringify(res));
@@ -10,7 +18,7 @@ exports.getPosts = function(RouteData) {
             RouteData.response.writeHead(500);
             RouteData.response.end();
         }
-    }); 
+    });
 };
 
 exports.newPost = function(RouteData) {
