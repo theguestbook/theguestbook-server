@@ -29,6 +29,7 @@ exports.newPost = function(RouteData) {
             RouteData.response.end();
         } else {
             RouteData.response.writeHead(500);
+            RouteData.response.write(err);
             RouteData.response.end();
         }
     });
