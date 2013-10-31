@@ -35,7 +35,7 @@ exports.newPost = function(title, content, callback) {
         });
     } else {
         var err = "Bad POST data"
-        console.log(err)
+        console.log(err);
         callback(err);
     }
 };
