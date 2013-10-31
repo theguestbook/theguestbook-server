@@ -1,4 +1,5 @@
 var postHelper = require("./postHelper");
+var commentHelper = require("./commentHelper");
 
 exports.getPosts = function(RouteData) {
     var getPostJSON = JSON.parse(RouteData.postData);
@@ -30,6 +31,35 @@ exports.newPost = function(RouteData) {
         } else {
             RouteData.response.writeHead(500);
             RouteData.response.write(err);
+            RouteData.response.end();
+        }
+    });
+};
+
+exports.getComment = function(RouteData) {
+    var commentRequest = JSON.parse(RouteData.postData);
+    commentHelper.getComments(commentRequest.parent, function(err, comments) {
+        if(err) {
+            RouteData.response.writeHead(500);
+            RouteData.response.write(err);
+            RouteData.response.end();
+        } else {
+            RouteData.response.writeHead(200);
+            RouteData.response.write(JSON.stringify(comments));
+            RouteData.response.end();
+        }
+    });
+};
+
+exports.newComment = function(RouteData) {
+    var commentSchema = JSON.parse(RouteData.postData);
+    commentHelper.newComment(commentSchema.content, commentSchema.parent, function(err) {
+        if(err) {
+            RouteData.response.writeHead(500);
+            RouteData.response.write(err);
+            RouteData.response.end();
+        } else {
+            RouteData.response.writeHead(200);
             RouteData.response.end();
         }
     });

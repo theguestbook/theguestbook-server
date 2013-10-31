@@ -6,7 +6,8 @@ exports.getPosts = function(options, callback) {
     response.posts = []; //the actual posts
 
     Post.find(options.find).sort("-_id") //sort by latest
-    .skip(options.start).limit(options.limit).exec(function(err, posts) {
+    .skip(options.start).limit(options.limit)
+    .exec(function(err, posts) {
         if (err === null) {
             response.posts = posts;
             callback(null, response.posts);

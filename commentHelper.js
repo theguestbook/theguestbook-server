@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
 var Comment = require("./mongoose-models/Comment").model;
 
-exports.getComments = function(parent) {
+exports.getComments = function(parent, callback) {
 	var response = {};
 	response.comments = [];
 
