@@ -12,6 +12,7 @@ handlers["/"]="index.html";
 handlers["/getPosts"]=requestHandlers.getPosts;
 handlers["/newPost"] = requestHandlers.newPost;
 handlers["/newComment"] = requestHandlers.newComment;
+handlers["/getComments"] = requestHandlers.getComments;
 
 //connect to the database
 mongoose.connect(host); //as specified in the hidden conf file

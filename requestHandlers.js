@@ -36,7 +36,7 @@ exports.newPost = function(RouteData) {
     });
 };
 
-exports.getComment = function(RouteData) {
+exports.getComments = function(RouteData) {
     var commentRequest = JSON.parse(RouteData.postData);
     commentHelper.getComments(commentRequest.parent, function(err, comments) {
         if(err) {
@@ -56,7 +56,7 @@ exports.newComment = function(RouteData) {
     commentHelper.newComment(commentSchema.content, commentSchema.parent, function(err) {
         if(err) {
             RouteData.response.writeHead(500);
-            RouteData.response.write(err);
+            RouteData.response.write("Internal Server Error");
             RouteData.response.end();
         } else {
             RouteData.response.writeHead(200);

@@ -5,7 +5,7 @@ exports.getComments = function(parent, callback) {
 	var response = {};
 	response.comments = [];
 
-	Comment.find({parent: parent}) //find all the coments pertaining to a post
+	Comment.find({parent:parent}) //find all the comments pertaining to a post
 	.exec(function(err, comments) {
 		if(err) callback(err);
 		else {
@@ -29,5 +29,6 @@ exports.newComment = function(content, parent, callback) {
 				callback(null);
 			}
 		});
-	}
+	} else
+	callback("Bad POST data");
 };
