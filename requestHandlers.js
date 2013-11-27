@@ -5,9 +5,9 @@ exports.getPosts = function(RouteData) {
     var getPostJSON = JSON.parse(RouteData.postData);
     
     var options = {}; //general options
-    options.find = {}; //options pertaining to Model.find()
-    options.limit = getPostJSON.amount;
-    options.start = getPostJSON.start;
+    options.find = getPostJSON.find || {}; //options pertaining to Model.find()
+    options.limit = getPostJSON.amount || 20;
+    options.start = getPostJSON.start || 0;
 
     //get posts from the database via postHelper
     postHelper.getPosts(options, function(err, res) {
